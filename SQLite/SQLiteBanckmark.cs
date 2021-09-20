@@ -46,6 +46,7 @@ namespace SQLBenchmark.SQLite
         {
             _posts = null;
             _sqliteContext.Database.EnsureDeleted();
+            Console.WriteLine("Cleanup");
         }
 
         #region Dapper
@@ -77,7 +78,7 @@ namespace SQLBenchmark.SQLite
 
             try
             {
-                cmdBuilder.AppendLine($"INSERT INTO post");
+                cmdBuilder.AppendLine($"INSERT OR IGNORE INTO post(id,account,title,context,read)");
                 cmdBuilder.AppendLine("VALUES ");
                 for (int i = 0; i < DataCount; i++)
                 {
