@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BenchmarkDotNet.Running;
+using System;
 
 namespace SQLBenchmark
 {
@@ -7,6 +8,7 @@ namespace SQLBenchmark
         private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            BenchmarkRunner.Run(typeof(Program).Assembly);
         }
     }
 }
